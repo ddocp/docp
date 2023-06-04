@@ -1,0 +1,52 @@
+{
+  "name": "docp",
+  "version": "0.11.0",
+  "description": "Compile markdown to interactive Web",
+  "main": "lib/index.js",
+  "bin": {
+    "docp": "lib/cli.js"
+  },
+  "homepage": "https://github.com/docp-club/docp",
+  "files": [
+    "lib",
+    "template"
+  ],
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc --build tsconfig.json",
+    "doc": "docp build --rootDir ./docs/zh-cn --outDir ./zh-cn && docp build --rootDir ./docs/en --outDir ./en",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Heboy",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "@docp/tab-code": "workspace:*",
+    "@docp/webapp": "workspace:*",
+    "colors": "1.4.0",
+    "glob": "^8.0.3",
+    "inquirer": "^8.2.3",
+    "js-beautify": "^1.14.7",
+    "lodash.debounce": "^4.0.8",
+    "marked": "^4.2.12",
+    "memfs": "^3.4.10",
+    "minimist": "^1.2.7",
+    "nanoid": "3.3.4",
+    "node-html-parser": "^6.1.5",
+    "obj2str": "^0.1.2",
+    "unionfs": "^4.4.0",
+    "webpack": "^5.75.0",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@types/marked": "^4.0.8",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "babel-loader": "^9.1.0",
+    "eslint": "^8.27.0",
+    "typescript": "^4.8.4"
+  }
+}

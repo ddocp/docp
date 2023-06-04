@@ -1,0 +1,49 @@
+{
+  "name": "docp",
+  "version": "0.11.0",
+  "description": "Compile markdown to interactive Web",
+  "homepage": "https://github.com/docp-club/docp",
+  "author": "Heboy",
+  "private": true,
+  "license": "Apache 2.0",
+  "keywords": [
+    "markdown",
+    "interactive"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r --filter=./packages/* run build",
+    "clear-all": "rimraf **/node_modules",
+    "lint": "eslint packages/ --ext .js --ext .ts --ext .tsx",
+    "lint:style": "stylelint ./packages/**/*.{css,scss}",
+    "version": "run-s version:*",
+    "version:release": "pnpm --parallel -r --filter=./packages/* exec npm version ${npm_package_version}",
+    "version:git": "git add . && git commit -m \"chore(release): publish ${npm_package_version}\"",
+    "version:changelog": "conventional-changelog -p angular"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-config-standard-jsx": "^11.0.0",
+    "eslint-plugin-jest": "27.1.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.2"
+  }
+}

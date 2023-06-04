@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-w {
+  width: 1200px;
+  max-width: 1200px;
+  min-width: 900px;
+}
+
+.height-without-header {
+  height: calc(100vh - 66px);
+  overflow: scroll;
+  padding-bottom: 50px;
+}
+
+.sidebar .highlight {
+  color: #42b883;
+  font-weight: bold;
+}

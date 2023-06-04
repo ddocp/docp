@@ -1,0 +1,49 @@
+{
+  "name": "@docp/webapp",
+  "version": "0.1.0",
+  "private": true,
+  "main": "lib/index.js",
+  "dependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.3",
+    "daisyui": "^2.50.2",
+    "docp": "workspace:*",
+    "fs-extra": "^11.1.1",
+    "html-webpack-plugin": "^5.5.0",
+    "postcss-loader": "^7.0.2",
+    "postcss-preset-env": "^8.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1",
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.2.7",
+    "terser-webpack-plugin": "^5.3.7",
+    "webpack": "^5.75.0",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "echo 0",
+    "start": "webpack serve"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
