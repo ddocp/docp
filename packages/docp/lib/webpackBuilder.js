@@ -69,7 +69,7 @@ class WebpackBuild {
             });
         });
         fs_1.default.watch(rootPath, { recursive: true }, (eventType, filename) => {
-            if (path_1.default.extname(filename) !== '.md') {
+            if (filename === null || path_1.default.extname(filename) !== '.md') {
                 return;
             }
             if (eventType !== 'rename') {

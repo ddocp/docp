@@ -59,7 +59,7 @@ module.exports = class CreateSPA {
       // copy routerList to output path
       configSlot.push(`{
         path: '${filename}',
-        element: <App src='/static/${i}' title='${this.docpConfig.name}' />
+        element: <App src='/static/${i}' title=${this.docpConfig.name ? '\'' + this.docpConfig.name + '\'' : '{' + undefined + '}'} />
       }`)
     }
     return '[' + configSlot.join(',') + ']'

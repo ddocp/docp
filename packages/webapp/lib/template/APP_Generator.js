@@ -18,10 +18,12 @@ export function APP_SPA(props) {
   const currentPath = useLocation().pathname
   const hasSidebar = Array.isArray(window.$docp_sidebar) && window.$docp_sidebar.length > 0
   const sidebarWidth = hasSidebar ? 240 : 0
+  const hasHeader = props.title || (Array.isArray(window.$docp_navbar) && window.$docp_navbar.length > 0)
+  const mainMt = hasHeader ? 'mt-16' : ''
   return (
     <>
-      <Header type='spa' links={window.$docp_navbar} {...props} />
-      <div className='main-w mt-16 my-0 mx-auto flex'>
+      {hasHeader && <Header type='spa' links={window.$docp_navbar} {...props} />}
+      <div className={'main-w my-0 mx-auto flex' + mainMt}>
         {hasSidebar &&
           <div style={{ width: '240px' }} className='mt-4 pl-4 height-without-header overflow-y-scroll sticky top-16'>
             {recursiveSidebar('spa', window.$docp_sidebar, currentPath)}
@@ -48,10 +50,12 @@ export function APP_MPA(props) {
   const currentPath = useLocation().pathname
   const hasSidebar = Array.isArray(window.$docp_sidebar) && window.$docp_sidebar.length > 0
   const sidebarWidth = hasSidebar ? 240 : 0
+  const hasHeader = props.title || (Array.isArray(window.$docp_navbar) && window.$docp_navbar.length > 0)
+  const mainMt = hasHeader ? 'mt-16' : ''
   return (
     <>
-      <Header type='mpa' links={window.$docp_navbar} {...props} />
-      <div className='main-w mt-16 my-0 mx-auto flex'>
+      {hasHeader && <Header type='mpa' links={window.$docp_navbar} {...props} />}
+      <div className={'main-w my-0 mx-auto flex' + mainMt}>
         {hasSidebar &&
           <div style={{ width: '240px' }} className='mt-4 pl-4 height-without-header overflow-y-scroll sticky top-16'>
             {recursiveSidebar('mpa', window.$docp_sidebar, currentPath)}
@@ -67,9 +71,6 @@ function Header(props) {
   const title = props.title
   const links = props.links || []
   const type = props.type
-  if (!title && links.length === 0) {
-    return null
-  }
   return (
     <div className='w-screen fixed z-50 top-0 bg-white border-b border-slate-100'>
       <div className="main-w flex mx-auto">
