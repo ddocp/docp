@@ -73,7 +73,7 @@ export default class WebpackBuild {
       })
     })
     fs.watch(rootPath, { recursive: true }, (eventType, filename) => {
-      if (path.extname(filename) !== '.md') {
+      if (filename === null || path.extname(filename) !== '.md') {
         return
       }
       if (eventType !== 'rename') {

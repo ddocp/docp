@@ -1,4 +1,5 @@
 const path = require('path')
+const os = require('os')
 const webpack = require('webpack')
 const DevServer = require('webpack-dev-server')
 
@@ -41,7 +42,6 @@ module.exports = class WebpackRunner {
       this.compiler.run(callback)
     } else {
       const server = new DevServer(this.devServerOptions, this.compiler)
-      console.log('Starting server...')
       server.startCallback(callback)
     }
   }

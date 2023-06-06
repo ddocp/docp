@@ -1,4 +1,3 @@
-const path = require('path')
 const fse = require('fs-extra')
 const CopyPlugin = require("copy-webpack-plugin")
 const { merge } = require('webpack-merge')
@@ -125,6 +124,11 @@ module.exports = class CreateWorkspace {
         })] : [],
       },
       watch: watch,
+      // hide logs such as "Project is running at https://.../", override by real route
+      // hide webpack-dev-server logs on webpack5. https://webpack.js.org/configuration/other-options/#level
+      // infrastructureLogging: {
+      //   level: 'error',
+      // },
       devServer: {
         static: [{
           directory: htmlPluginPath,
@@ -132,6 +136,8 @@ module.exports = class CreateWorkspace {
         }],
         client: {
           overlay: false,
+          // browser client logging setting
+          // logging: 'none'
         }
       }
     }

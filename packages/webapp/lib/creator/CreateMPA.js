@@ -55,6 +55,9 @@ module.exports = class CreateMPA {
     const htmlPlugins = []
     for (let i in this.docpAssets) {
       const assetName = i.split('.')[0]
+      if (isNavigation(assetName)) {
+        continue
+      }
       htmlPlugins.push(new HtmlWebpackPlugin({
         inject: true,
         template: htmlPluginPath + '/index.html',
@@ -74,7 +77,7 @@ module.exports = class CreateMPA {
     import { RouterProvider, createHashRouter } from 'react-router-dom'
     import App from './App'
     // import sidebar&navbar
-    ${dependedNavString }
+    ${dependedNavString}
     // import specified bundle
     ${dependedBundleString}
     import './index.css'
