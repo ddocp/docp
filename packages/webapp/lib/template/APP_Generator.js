@@ -19,13 +19,14 @@ export function APP_SPA(props) {
   const hasSidebar = Array.isArray(window.$docp_sidebar) && window.$docp_sidebar.length > 0
   const sidebarWidth = hasSidebar ? 240 : 0
   const hasHeader = props.title || (Array.isArray(window.$docp_navbar) && window.$docp_navbar.length > 0)
-  const mainMt = hasHeader ? 'mt-16' : ''
+  const mainMt = hasHeader ? 'mt-16' : 'mt-6'
+  const sidebarTop = hasHeader ? 'top-16' : 'top-6'
   return (
     <>
       {hasHeader && <Header type='spa' links={window.$docp_navbar} {...props} />}
-      <div className={'main-w my-0 mx-auto flex' + mainMt}>
+      <div className={'main-w my-0 mx-auto flex ' + mainMt}>
         {hasSidebar &&
-          <div style={{ width: '240px' }} className='mt-4 pl-4 height-without-header overflow-y-scroll sticky top-16'>
+          <div style={{ width: '240px' }} className={'mt-4 pl-4 height-without-header overflow-y-scroll sticky ' + sidebarTop}>
             {recursiveSidebar('spa', window.$docp_sidebar, currentPath)}
           </div>
         }
@@ -51,13 +52,14 @@ export function APP_MPA(props) {
   const hasSidebar = Array.isArray(window.$docp_sidebar) && window.$docp_sidebar.length > 0
   const sidebarWidth = hasSidebar ? 240 : 0
   const hasHeader = props.title || (Array.isArray(window.$docp_navbar) && window.$docp_navbar.length > 0)
-  const mainMt = hasHeader ? 'mt-16' : ''
+  const mainMt = hasHeader ? 'mt-16' : 'mt-6'
+  const sidebarTop = hasHeader ? 'top-16' : 'top-6'
   return (
     <>
       {hasHeader && <Header type='mpa' links={window.$docp_navbar} {...props} />}
-      <div className={'main-w my-0 mx-auto flex' + mainMt}>
+      <div className={'main-w my-0 mx-auto flex ' + mainMt}>
         {hasSidebar &&
-          <div style={{ width: '240px' }} className='mt-4 pl-4 height-without-header overflow-y-scroll sticky top-16'>
+          <div style={{ width: '240px' }} className={'mt-4 pl-4 height-without-header overflow-y-scroll sticky ' + sidebarTop}>
             {recursiveSidebar('mpa', window.$docp_sidebar, currentPath)}
           </div>
         }

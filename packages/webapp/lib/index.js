@@ -44,7 +44,10 @@ module.exports = class Main {
   }
 
   afterWebappRunHandler(compiler) {
-    const { port, entry } = this.docpConfig
+    const { watch, port, entry } = this.docpConfig
+    if (watch !== true) {
+      return
+    }
     const { pageMode } = this.getUserConfig()
     const logger = compiler.getInfrastructureLogger('docp-webapp-logger');
     const websites = ['Pages at:']
