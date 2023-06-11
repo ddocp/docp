@@ -102,7 +102,9 @@ class Model {
             entry = [entry];
         }
         entry.forEach(i => {
-            const filename = path_1.default.basename(i, '.md');
+            // entry name not support dot, 'name.test.md' -> 'name_test.md'
+            // FIXME Conflict with name_test.md
+            const filename = path_1.default.basename(i, '.md').split('.').join('_');
             result[filename] = i;
         });
         return result;

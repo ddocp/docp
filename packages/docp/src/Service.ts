@@ -1,29 +1,9 @@
-import fs from 'fs/promises'
-import path from 'path'
-import inquirer from 'inquirer'
 import WebpackBuild from './WebpackBuilder'
 import { log, multipleFS } from './utils'
 import Model from './Model'
-import getDefaultConfig from './template/configuration'
-import { input, output, override } from './template/inquires'
 import { IDocpConfig } from 'global/types'
 
 export default class Service {
-
-  public async init() {
-    const docpConfigPath = path.resolve(process.cwd(), 'docp.config.js')
-    const stat = await fs.stat(docpConfigPath)
-    const prompts = [input, output]
-    if (stat.isFile()) {
-      prompts.unshift(override)
-    }
-    const answer = await inquirer.prompt(prompts)
-    if (!answer.override) {
-      process.exit(0)
-    }
-    await fs.writeFile(docpConfigPath, getDefaultConfig(answer))
-    log.success('[success] docp.config.js created!')
-  }
 
   public async serve(options: any) {
     const config = this.getDocpConfig(options, 'serve')

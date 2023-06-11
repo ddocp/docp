@@ -8,8 +8,7 @@
   },
   "homepage": "https://github.com/docp-club/docp",
   "files": [
-    "lib",
-    "template"
+    "lib"
   ],
   "scripts": {
     "dev": "tsc --watch",

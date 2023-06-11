@@ -12,31 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const promises_1 = __importDefault(require("fs/promises"));
-const path_1 = __importDefault(require("path"));
-const inquirer_1 = __importDefault(require("inquirer"));
 const WebpackBuilder_1 = __importDefault(require("./WebpackBuilder"));
 const utils_1 = require("./utils");
 const Model_1 = __importDefault(require("./Model"));
-const configuration_1 = __importDefault(require("./template/configuration"));
-const inquires_1 = require("./template/inquires");
 class Service {
-    init() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const docpConfigPath = path_1.default.resolve(process.cwd(), 'docp.config.js');
-            const stat = yield promises_1.default.stat(docpConfigPath);
-            const prompts = [inquires_1.input, inquires_1.output];
-            if (stat.isFile()) {
-                prompts.unshift(inquires_1.override);
-            }
-            const answer = yield inquirer_1.default.prompt(prompts);
-            if (!answer.override) {
-                process.exit(0);
-            }
-            yield promises_1.default.writeFile(docpConfigPath, (0, configuration_1.default)(answer));
-            utils_1.log.success('[success] docp.config.js created!');
-        });
-    }
     serve(options) {
         return __awaiter(this, void 0, void 0, function* () {
             const config = this.getDocpConfig(options, 'serve');

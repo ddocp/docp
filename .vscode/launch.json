@@ -12,8 +12,8 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/packages/docp/lib/cli.js",
-      "args": ["serve"],
-      "cwd": "/Users/admin/work/vdoc",
+      "args": ["serve", "--entry", "./readme.zh.md"],
+      "cwd": "/Users/admin/github/docp2",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "outFiles": [

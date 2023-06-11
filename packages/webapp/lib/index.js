@@ -23,7 +23,7 @@ module.exports = class Main {
       const docpAssetsPath = docpCompilation.outputOptions.path
       const docpAssets = docpCompilation.assets
       let webpackConfig = null
-      if (pageMode === 'multiple') {
+      if (pageMode === 'mpa') {
         webpackConfig = await workspace.buildMPAProject(docpAssetsPath, docpAssets)
       } else {
         webpackConfig = await workspace.buildSPAProject(docpAssetsPath, docpAssets)
@@ -55,8 +55,8 @@ module.exports = class Main {
       if (isNavigation(i)) {
         return;
       }
-      const host = 'http://127.0.0.1:' + port + '/'
-      const path = pageMode === 'multiple' ? (i + '.html') : ('#/' + i)
+      const host = 'http://localhost:' + port + '/'
+      const path = pageMode === 'mpa' ? (i + '.html') : ('#/' + i)
       websites.push(host + path)
     })
     console.log('')
